@@ -10,6 +10,13 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.navbar__search {
+  border: none;
+  outline: none;
+  background: none;
+  margin-bottom: 2px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
