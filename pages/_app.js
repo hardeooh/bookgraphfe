@@ -1,24 +1,16 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import "../styles/globals.css";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: {session, ...pageProps} }) {
  return (
-   <div>
-     <Navbar/>
-     <Hero/>
-     <Component {...pageProps}/>
-   </div>
+  <SessionProvider session={session}>
+    {/* <Navbar/>
+    <Hero/> */}
+    <Component {...pageProps}/>
+  </SessionProvider>
  );
 }
 
 export default MyApp;
-
-
-// import '../styles/globals.css'
-
-// function MyApp({ Component, pageProps }) {
-//   return <Component {...pageProps} />
-// }
-
-// export default MyApp

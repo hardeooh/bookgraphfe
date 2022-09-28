@@ -1,8 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
 import { MdOutlineSearch } from 'react-icons/md'
 
 const Navbar = () => {
+
   return (
     <nav className="dark:bg-black dark:border-gray-700 container flex flex-wrap justify-around items-center mx-auto">
       <div className="flex p-10 space-x-5 align-middle w-2/5">
@@ -18,7 +20,10 @@ const Navbar = () => {
         <a className="text-white px-3 py-2 rounded-md text-lg font-medium" aria-current="page">Books</a>
         <a className="text-white px-3 py-2 rounded-md text-lg font-medium" aria-current="page">Lists</a>
         <a className="text-white px-3 py-2 rounded-md text-lg font-medium" aria-current="page">Members</a>      
-        <button className="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-3 rounded">
+        <button onClick={(e) => { 
+          e.preventDefault()
+          signIn()}}
+          className="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-3 rounded">
           Sign In
         </button>
         <button className="bg-green-700 hover:bg-green-500 text-white font-bold py-2  px-3 rounded">
