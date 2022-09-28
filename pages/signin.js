@@ -32,7 +32,7 @@ export default function SignIn({ csrfToken, providers }) {
         {providers && Object.values(providers).filter(e=>e.name!=="Email").map((provider) => (
           <div key={provider.name} className="flex flex-col justify-center items-center">
             <div className="pb-10">
-              <button onClick={() => signIn(provider.id)} className="text-2xl px-7 py-3 text-white bg-blue-500 font-medium leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3">
+              <button onClick={() => signIn(provider.id,process.env.NEXT_AUTH_URL)} className="text-2xl px-7 py-3 text-white bg-blue-500 font-medium leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3">
               <FcGoogle className="mr-5"/>Sign in with {provider.name}
               </button>
             </div>
@@ -50,10 +50,10 @@ export async function getServerSideProps(context) {
   const providers = await getProviders()
   if(session){
     return{
-      redirect: {destination: "/login"}
+      redirect: {destination: "/"}
     }
   } 
   return {
-    props: { csrfToken, providers },
+    props: { csrfToken, providers }
   }
 }
