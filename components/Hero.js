@@ -1,7 +1,20 @@
 import React from 'react'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 const Hero = () => {
+  const {data:session} = useSession()
+
+  if(session){
+    return(
+      <main className="container mx-auto h-96 relative">
+        <div className="flex flex-col justify-center w-auto p-16">
+          <h1 className="text-white px-3 py-5 rounded-md text-6xl font-medium">Welcome Back to Bookgraph</h1>
+        </div>
+      </main>
+
+    )
+  } else {
   return (
     <main className="container mx-auto h-96 relative">
       <div className="flex flex-col justify-start w-auto p-16">
@@ -14,7 +27,7 @@ const Hero = () => {
       </button>
       <img src="./bglogo_small2.jpg" className="absolute top-0 left-96 -z-10 mt-14 ml-20 w-9/12 h-9/12"></img>
     </main>
-  )
+  )}
 }
 
 export default Hero

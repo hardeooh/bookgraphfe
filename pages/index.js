@@ -1,19 +1,20 @@
 import React from 'react'
-import Link from 'next/link'
-import { signin, signout, useSession } from 'next-auth/react'
+import { useState } from 'react'
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import { SessionProvider } from "next-auth/react"
 
-export default function Home () { 
-  // const {data: session} = useSession();
-  
+export default function Home() { 
+  const [searchData, setSearchData] = useState('')
+  const updateSearchData = (data) => {
+    setSearchData(data)
+  }
+  console.log('parent component level', searchData);
+
+
   return (
    <div>
-    {/* <SessionProvider session={session}> */}
-     <Navbar/>
+     <Navbar updateSearchData={updateSearchData}/>
      <Hero/>
-    {/* </SessionProvider> */}
    </div>
  );
 }

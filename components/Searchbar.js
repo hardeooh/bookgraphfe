@@ -3,7 +3,7 @@ import { MdOutlineSearch } from 'react-icons/md'
 import { useState, useEffect } from 'react'
 import useDebounce from '../hooks/debounceHook'
 
-const Searchbar = () => {
+const Searchbar = ({updateSearchData}) => {
   const [searchResults, setSearchResults] = useState([])
   const [handleSearch, setHandleSearch] = useState('')
   const [loading, setLoading] = useState(false)
@@ -14,7 +14,7 @@ const Searchbar = () => {
 
   const prepareSearchQuery = (query) => {
     query = query.split(' ').join('+')
-    const url = `http://openlibrary.org/search.json?q=${query}`
+    const url = `http://openlibrary.org/search.json?title=${query}`
     return url
   }
 
@@ -25,13 +25,14 @@ const Searchbar = () => {
     setLoading(true)
 
     const URL = prepareSearchQuery(handleSearch)
-
+    
     const response = fetch(URL)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setSearchResults(data)
+        updateSearchData(data)
+
       })
 
       if(response) {

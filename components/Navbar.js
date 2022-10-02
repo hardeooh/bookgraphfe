@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import Searchbar from '../components/Searchbar'
 
-const Navbar = () => {
+const Navbar = ({updateSearchData}) => {
   const {data:session} = useSession()
   if (session){
     return (
@@ -12,7 +12,7 @@ const Navbar = () => {
           <a className="flex">
             <Image src="/BG_white.png" alt="Logo" width="40" height="40" className="object-contain h-10"/>
           </a>
-          <Searchbar/>
+          <Searchbar updateSearchData={updateSearchData}/>
         </div>
         <div className="flex space-x-5">
           <a className="text-white px-3 py-2 rounded-md text-lg font-medium" aria-current="page">Books</a>
