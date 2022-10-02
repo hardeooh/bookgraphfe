@@ -35,7 +35,7 @@ const Searchbar = () => {
       })
 
       if(response) {
-        console.log(searchResults, 'getBookData')
+        console.log(searchResults, handleSearch, 'getBookData')
       } 
   }
 
@@ -44,7 +44,7 @@ const Searchbar = () => {
   return (
   <div className="flex align-middle rounded-lg bg-gray-400 w-3/6">
     <MdOutlineSearch className="scale-160 mt-3 ml-3 z-1"/>
-    <input type="text" onChange={onSearchChange} className="navbar__search ml-2"/>
+    <input type="text" onChange={onSearchChange} className="navbar__search h-100% ml-2"/>
   </div>
   )
 }
