@@ -35,7 +35,7 @@ export const authOptions = {
   },
   pages: {
     signIn: "/signin",
-    newUser: "/login"
+    newUser: "/username"
     },
 }
 

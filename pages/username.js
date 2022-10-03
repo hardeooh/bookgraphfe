@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
+import Username from "../components/Username";
 
 export default function Home() { 
   
@@ -14,8 +14,7 @@ export default function Home() {
 
   return (
    <div>
-     <Navbar updateSearchData={updateSearchData}/>
-     <Hero/>
+     <Username />
    </div>
  );
 }

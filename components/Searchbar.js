@@ -32,7 +32,6 @@ const Searchbar = ({updateSearchData}) => {
       })
       .then((data) => {
         updateSearchData(data)
-
       })
 
       if(response) {

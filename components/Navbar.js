@@ -1,10 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import Searchbar from '../components/Searchbar'
+import Searchbar from './Searchbar'
 
 const Navbar = ({updateSearchData}) => {
   const {data:session} = useSession()
+  const createAccountRedirect = (e) => {
+    e.preventDefault()
+    window.location.href='/createaccount'
+  }
+
   if (session){
     return (
       <nav className="dark:bg-black dark:border-gray-700 container flex flex-wrap justify-around items-center mx-auto">
@@ -45,7 +50,7 @@ const Navbar = ({updateSearchData}) => {
           className="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-3 rounded">
           Sign In
         </button>
-        <button className="bg-green-700 hover:bg-green-500 text-white font-bold py-2  px-3 rounded">
+        <button onClick={createAccountRedirect} className="bg-green-700 hover:bg-green-500 text-white font-bold py-2  px-3 rounded">
           Create Account
         </button>
       </div>
