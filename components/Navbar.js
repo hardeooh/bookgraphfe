@@ -9,7 +9,7 @@ const Navbar = ({updateSearchData}) => {
   const {data:session} = useSession()
   const createAccountRedirect = (e) => {
     e.preventDefault()
-    router.push('/signin')
+    router.push('/createaccount')
   }
 
   if (session){
