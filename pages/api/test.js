@@ -12,7 +12,7 @@ export default async function addTest(req, res) {
     console.log('CONNECTED TO MONGO');
 
     console.log('CREATING DOCUMENT');
-    const test = await Test.create(req.body);
+    const test = await Test.find({});
     console.log('CREATED DOCUMENT');
 
     res.json({ test });
