@@ -1,13 +1,15 @@
 import React from 'react'
+import { useRouter } from 'next/router' 
 import Image from 'next/image'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import Searchbar from './Searchbar'
 
 const Navbar = ({updateSearchData}) => {
+  const router = useRouter()
   const {data:session} = useSession()
   const createAccountRedirect = (e) => {
     e.preventDefault()
-    window.location.href='/createaccount'
+    router.push('/signin')
   }
 
   if (session){

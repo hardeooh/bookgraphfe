@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Navbar from "../components/Navbar";
-import Username from "../components/Username";
+import Profile from "../components/Profile";
 
 export default function Home() { 
   
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
    <div>
-     <Username />
+     <Profile />
    </div>
  );
 }

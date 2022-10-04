@@ -10,8 +10,8 @@ export default function SignIn({ csrfToken, providers }) {
     setPlaceholder("")
   }
 
-  const signUp = (provider) => {
-    signIn(provider.id,process.env.NEXT_AUTH_URL)
+  const signUpHandler = (provider) => {
+    signIn(provider.id,`${process.env.NEXT_AUTH_URL}/profile`)
     
   }
 
@@ -39,7 +39,10 @@ export default function SignIn({ csrfToken, providers }) {
         {providers && Object.values(providers).filter(e=>e.name!=="Email").map((provider) => (
           <div key={provider.name} className="flex flex-col justify-center items-center">
             <div className="pb-10">
-              <button onClick={() => signUp(provider)} className="text-2xl px-7 py-3 text-white bg-blue-500 font-medium leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3">
+              <button onClick={() => {
+                signUpHandler(provider)
+              }} 
+              className="text-2xl px-7 py-3 text-white bg-blue-500 font-medium leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3">
               <FcGoogle className="mr-5"/>Sign up with {provider.name}
               </button>
             </div>

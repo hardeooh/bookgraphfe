@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Username = () => {
+const Profile = () => {
   return (
     <div>
       <h1>Hello world</h1>
@@ -8,4 +8,4 @@ const Username = () => {
   )
 }
 
-export default Username
+export default Profile

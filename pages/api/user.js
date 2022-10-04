@@ -1,5 +1,5 @@
 import dbConnect from '../lib/dbConnect'
-import User from '../../models/User'
+import Userinfo from '../../models/Userinfo'
 import { useSession } from 'next-auth/react';
 
 
@@ -8,12 +8,14 @@ import { useSession } from 'next-auth/react';
  
 
 export default async function handler (req, res) {
+  const session = useSession
+
   const { method } = req
   console.log(req.body);
   switch (method) {
     case 'GET':
       try {
-        const users = await User.find({})
+        const users = await Userinfo.find({})
         res.status(200).json({ success: true, data: users })
       } catch (error) {
         res.status(400).json({ success: false })
@@ -22,7 +24,7 @@ export default async function handler (req, res) {
     case 'POST':
       try {
         await dbConnect();
-        const user = await User.create(req.body)
+        const user = await Userinfo.create(req.body)
         console.log(req.body);
         res.status(201).json({ success: true, data: user })
       } catch (error) {
@@ -32,7 +34,7 @@ export default async function handler (req, res) {
     case 'PUT' :
       try {     
         await dbConnect();
-        const user = await User.findOneAndUpdate(req.body)
+        const user = await Userinfo.findOneAndUpdate(req.body)
         console.log(req.body);
         res.status(201).json({ success: true, data: user })
       } catch (error) {
